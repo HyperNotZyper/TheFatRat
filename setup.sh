@@ -986,10 +986,10 @@ which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
 case "$apk" in 
-v.2.6.0)
+v.2.7.0)
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.6.0..................[ found ]"
+echo -e "$green" "[ ✔ ] Apktool v.2.7.0..................[ found ]"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
@@ -1003,7 +1003,7 @@ which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.6.0"
+echo -e "$red" "[ x ] Apktool v.2.7.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
@@ -1016,10 +1016,10 @@ which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.6.0...................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.7.0...................[Installed]"
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.6.0"
+echo -e "$red" "[ x ] Apktool v.2.7.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
