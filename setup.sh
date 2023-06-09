@@ -8,6 +8,8 @@ xterm -T "☣ REMOVING MINGW ☣" -geometry 100x30 -e "apt remove --purge *mingw
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" != "0" ]; then
 echo "Done"
+xterm -T "☣ GETTING UPDATES ☣" -geometry 100x30 -e "sudo apt-get update -y"
+xterm -T "☣ INSTALLING UPDATES ☣" -geometry 100x30 -e "sudo apt-get upgrade -y"
 else
 echo "Error"
 echo ""
@@ -40,7 +42,7 @@ fi
 }	
 
 function repokey () {
-echo -ne "$green" "[ ? ] Update Jessie/Kali Repo Public Key"
+echo -ne "$green" "[ ? ] Update Bullseye/Kali Repo Public Key"
 apt-get update &> /tmp/aptkey.log 
 awk '{print $1}' RS='NO_PUBKEY' /tmp/aptkey.log | sed '1d' > /tmp/expkeys.log
 awk '{print $1}' RS='EXPKEYSIG' /tmp/aptkey.log | sed '1d' >> /tmp/expkeys.log
@@ -822,9 +824,9 @@ cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
 fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ bullseye main contrib non-free" > /etc/apt/sources.list
 repokey
-xterm -T "☣ UPDATING REPOSITORIES DEDIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
+xterm -T "☣ UPDATING REPOSITORIES DEBIAN BULLSEYE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
 sleep 1
 
 # check if mingw32 or mingw-64 exists 
@@ -986,10 +988,10 @@ which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
 case "$apk" in 
-v.2.6.0)
+v.2.7.0)
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.6.0..................[ found ]"
+echo -e "$green" "[ ✔ ] Apktool v.2.7.0..................[ found ]"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
@@ -1003,7 +1005,7 @@ which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.6.0"
+echo -e "$red" "[ x ] Apktool v.2.7.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
@@ -1016,10 +1018,10 @@ which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.6.0...................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.7.0...................[Installed]"
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.6.0"
+echo -e "$red" "[ x ] Apktool v.2.7.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
