@@ -8,8 +8,6 @@ xterm -T "☣ REMOVING MINGW ☣" -geometry 100x30 -e "apt remove --purge *mingw
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" != "0" ]; then
 echo "Done"
-xterm -T "☣ GETTING UPDATES ☣" -geometry 100x30 -e "sudo apt-get update -y"
-xterm -T "☣ INSTALLING UPDATES ☣" -geometry 100x30 -e "sudo apt-get upgrade -y"
 else
 echo "Error"
 echo ""
@@ -177,7 +175,9 @@ mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
 rm -f /etc/apt/sources.list.fatrat
 apt-get clean
-xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
+xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update"
+xterm -T "☣ GETTING UPDATES ☣" -geometry 100x30 -e "sudo apt-get update -y"
+xterm -T "☣ INSTALLING UPDATES ☣" -geometry 100x30 -e "sudo apt-get upgrade -y"
 clear
 rm -rf "$config" >/dev/null 2>&1
 
