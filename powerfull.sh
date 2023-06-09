@@ -45,7 +45,7 @@ echo -e $okegreen ""
 #get user local ip , public ip & hostname into variables
 lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 lanip6=`ip addr | grep 'state UP' -A4 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
-publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
+publicip=`wget -O - -q https://checkip.amazonaws.com`
 hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
 comp="0"
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
