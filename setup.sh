@@ -825,6 +825,9 @@ fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian/ bullseye main contrib non-free" > /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian bullseye-updates main contrib non-free" > /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian bullseye-backports main contrib non-free" > /etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security/ bullseye-security main contrib non-free" > /etc/apt/sources.list
 repokey
 xterm -T "☣ UPDATING REPOSITORIES DEBIAN BULLSEYE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
 sleep 1
