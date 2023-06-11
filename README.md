@@ -40,12 +40,12 @@ Instructions on how to install *TheFatRat*
 ```bash
 git clone https://github.com/HyperNotZyper/TheFatRat.git
 cd TheFatRat
-chmod +x setup.sh && ./setup.sh
+chmod +x setup.sh && sudo ./setup.sh
 ```
 ### Update 
 ```bash
 cd TheFatRat
-./update && chmod +x setup.sh && ./setup.sh
+./update && chmod +x setup.sh && sudo ./setup.sh
 ```
 ### Troubleshoot on TheFatRat
 chk_tools script to use in case of problems in setup.sh of fatrat
